@@ -1,0 +1,7 @@
+.git
+.github
+.claude
+*.md
+docker-compose.yml
+# Maquettes brutes (non nécessaires dans l'image finale)
+/*.png
