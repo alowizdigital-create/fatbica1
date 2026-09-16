@@ -989,6 +989,12 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
   padding:22px;
   background:#fff;
   box-shadow:0 4px 16px rgba(0,0,0,.04);
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+}
+.event-card:hover{
+  box-shadow:0 12px 28px rgba(44,70,201,.12);
+  transform:translateY(-4px);
+  border-color:#dbe1fb;
 }
 .event-date{
   flex-shrink:0;
@@ -1019,22 +1025,38 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
   text-align:center;
   border:1px solid #ececec;
   border-radius:14px;
-  padding:30px 20px;
+  padding:34px 22px 28px;
   background:#fff;
   box-shadow:0 4px 16px rgba(0,0,0,.04);
-  transition:box-shadow .2s, transform .2s;
+  transition:box-shadow .2s, transform .2s, border-color .2s;
 }
-.resource-card:hover{box-shadow:0 10px 26px rgba(0,0,0,.1); transform:translateY(-3px);}
+.resource-card:hover{
+  box-shadow:0 12px 28px rgba(44,70,201,.12);
+  transform:translateY(-4px);
+  border-color:#dbe1fb;
+}
 .resource-icon{
-  width:56px; height:56px;
-  margin:0 auto 16px;
+  width:64px; height:64px;
+  margin:0 auto 18px;
   border-radius:50%;
-  background:var(--off-white);
+  background:linear-gradient(160deg, #eef1fd, #e2e7fb);
   display:flex; align-items:center; justify-content:center;
-  font-size:1.6rem;
+  transition:background .2s;
 }
+.resource-card:hover .resource-icon{background:var(--blue);}
+.resource-icon svg{
+  width:28px; height:28px;
+  stroke:var(--blue);
+  fill:none;
+  stroke-width:1.7;
+  transition:stroke .2s;
+}
+.resource-card:hover .resource-icon svg{stroke:#fff;}
 .resource-card h3{font-size:1.05rem; margin-bottom:8px;}
 .resource-card p{font-size:.88rem; color:var(--grey-text); margin:0 0 14px;}
+
+/* ---------- Fil d'Ariane entre rubriques "Ressources" ---------- */
+.resource-hub-nav .page-subnav-inner{justify-content:center;}
 
 /* ---------- Vie étudiante : témoignages ---------- */
 .mini-testimonials{
@@ -1048,6 +1070,12 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
   border-radius:14px;
   padding:26px 24px;
   box-shadow:0 4px 16px rgba(0,0,0,.04);
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+}
+.mini-testimonial:hover{
+  box-shadow:0 12px 28px rgba(44,70,201,.12);
+  transform:translateY(-4px);
+  border-color:#dbe1fb;
 }
 .mini-testimonial p{
   font-family:var(--font-serif);
@@ -1064,12 +1092,32 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
 }
 
 /* ---------- FAQ ---------- */
-.faq-group{margin-bottom:44px;}
+.faq-group{
+  margin-bottom:34px;
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius:16px;
+  padding:28px 26px 8px;
+  box-shadow:0 4px 16px rgba(0,0,0,.03);
+}
 .faq-group h2{
-  font-family:var(--font-serif);
-  font-size:1.4rem;
-  color:var(--blue);
-  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--font-sans);
+  font-weight:700;
+  font-size:1.15rem;
+  color:#1a1a1a;
+  margin-bottom:18px;
+  padding-bottom:16px;
+  border-bottom:1px solid #f0f0f0;
+}
+.faq-group h2::before{
+  content:"";
+  flex-shrink:0;
+  width:10px; height:10px;
+  border-radius:50%;
+  background:var(--blue);
 }
 .faq-item{
   border:1px solid #ececec;
@@ -1077,7 +1125,9 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
   margin-bottom:10px;
   overflow:hidden;
   background:#fff;
+  transition:border-color .2s;
 }
+.faq-item[open]{border-color:#c9d3f7;}
 .faq-item summary{
   padding:16px 20px;
   font-weight:600;
@@ -1086,17 +1136,23 @@ h1,h2,h3,h4{font-family:var(--font-sans); margin:0;}
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:12px;
 }
+.faq-item summary:hover{color:var(--blue);}
 .faq-item summary::-webkit-details-marker{display:none;}
 .faq-item summary::after{
   content:"+";
   font-size:1.3rem;
   color:var(--blue);
   flex-shrink:0;
-  margin-left:12px;
-  transition:transform .2s;
+  width:24px; height:24px;
+  border-radius:50%;
+  background:var(--off-white);
+  display:flex; align-items:center; justify-content:center;
+  line-height:1;
+  transition:transform .2s, background .2s;
 }
-.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item[open] summary::after{transform:rotate(45deg); background:var(--blue); color:#fff;}
 .faq-item p{
   padding:0 20px 18px;
   margin:0;

@@ -58,8 +58,13 @@
 
   const links = [...subnav.querySelectorAll('a')];
   const sections = links
+    .filter(a => a.getAttribute('href').startsWith('#'))
     .map(a => document.querySelector(a.getAttribute('href')))
     .filter(Boolean);
+
+  // Liens vers d'autres pages (pas des ancres) : pas de suivi au défilement,
+  // l'état actif est déjà fixé statiquement dans le HTML.
+  if (!sections.length) return;
 
   function setActive(id) {
     links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
