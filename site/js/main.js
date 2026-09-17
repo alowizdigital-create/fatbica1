@@ -86,6 +86,35 @@
   links.forEach(a => a.addEventListener('click', () => setTimeout(updateOnScroll, 300)));
 })();
 
+// ===== Galerie photos (lightbox) =====
+(function () {
+  const items = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  if (!items.length || !lightbox) return;
+
+  const img = lightbox.querySelector('img');
+  const caption = lightbox.querySelector('.lightbox-caption');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+
+  function open(item) {
+    img.src = item.getAttribute('href');
+    img.alt = item.querySelector('img').alt || '';
+    caption.textContent = item.dataset.caption || '';
+    lightbox.classList.add('open');
+  }
+  function close() {
+    lightbox.classList.remove('open');
+    img.src = '';
+  }
+
+  items.forEach(item => {
+    item.addEventListener('click', (e) => { e.preventDefault(); open(item); });
+  });
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
 // ===== Formulaires (démo sans back-end) =====
 document.addEventListener('submit', function (e) {
   if (e.target.matches('.reg-form, .contact-form')) {
